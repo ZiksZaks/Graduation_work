@@ -55,7 +55,6 @@ void printReport() {
 void setup() {
     Serial.begin(115200);
     
-    // --- ПОДКЛЮЧЕНИЕ К WI-FI ---
     Serial.println();
     Serial.print("Подключение к сети: ");
     Serial.println(ssid);
@@ -72,10 +71,8 @@ void setup() {
     Serial.print("IP адрес ESP32: ");
     Serial.println(WiFi.localIP());
 
-    // --- НАСТРОЙКА MQTT ---
     client.setServer(mqtt_server, 1883);
     
-    // --- ИНИЦИАЛИЗАЦИЯ ИНТЕРФЕЙСОВ И ДАТЧИКОВ ---
     Wire.begin(21, 22);
     Wire.setClock(100000);
 
@@ -99,7 +96,6 @@ void loop() {
     
     printReport(); 
 
-    // Формируем payload для отправки
     String payload = String(currentMeasurements.ax) + "," + 
                      String(currentMeasurements.ay) + "," + 
                      String(currentMeasurements.az) + "," + 
