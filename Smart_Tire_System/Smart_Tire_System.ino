@@ -76,7 +76,7 @@ void setup() {
     Wire.begin(21, 22);
     Wire.setClock(100000);
 
-    // Запускаем датчики, если они откликаются по I2C
+    
     if (deviceExists(0x77)) bmp.begin();
     if (deviceExists(0x23)) lightMeter.begin();
 
